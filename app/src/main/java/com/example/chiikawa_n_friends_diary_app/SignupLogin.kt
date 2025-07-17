@@ -1,12 +1,18 @@
 package com.example.chiikawa_n_friends_diary_app
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class SignupLogin : AppCompatActivity() {
+
+    lateinit var btnSignUp: Button
+    lateinit var btnLogin: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +22,14 @@ class SignupLogin : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        btnSignUp = findViewById<Button>(R.id.btnSignUp)
+        btnSignUp.setOnClickListener{
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
+        }
+
+        //still needs login binding but that functionality is still nonexistent
+
     }
 }
