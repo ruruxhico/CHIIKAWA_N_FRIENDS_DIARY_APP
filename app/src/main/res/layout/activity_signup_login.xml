@@ -5,6 +5,67 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Background"
     tools:context=".SignupLogin">
 
+    <ImageView
+        android:id="@+id/imgChiikawa"
+        android:layout_width="184dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/adorablecutiechiikawa" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:outlineSpotShadowColor="#EDEDED"
+        android:text="Welcome to\n Chiikawa and Friends'\n Diary!"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgChiikawa" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="SignUp"
+        android:textColor="#789DB1"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Login"
+        android:textColor="#789DB1"
+        android:backgroundTint="@color/Yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSignUp"
+        app:layout_constraintTop_toTopOf="@+id/btnSignUp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
