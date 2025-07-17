@@ -29,7 +29,13 @@ class SignupLogin : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //still needs login binding but that functionality is still nonexistent
+        /*
+        btnLogin = findViewById<Button>(R.id.btnLogin)
+        btnLogin.setOnClickListener{
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
+        */
 
     }
 }

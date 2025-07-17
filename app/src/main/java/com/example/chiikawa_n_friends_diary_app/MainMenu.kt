@@ -33,7 +33,7 @@ class MainMenu : AppCompatActivity() {
 
 
         btnNotes = findViewById<Button>(R.id.btnNotes)
-        btnProfile.setOnClickListener{
+        btnNotes.setOnClickListener{
             val intent = Intent(this, Notes::class.java)
             startActivity(intent)
         }

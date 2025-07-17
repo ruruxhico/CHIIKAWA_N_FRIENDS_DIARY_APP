@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class About : AppCompatActivity() {
+class Write : AppCompatActivity() {
 
     lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_about)
+        setContentView(R.layout.activity_write)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -24,10 +24,9 @@ class About : AppCompatActivity() {
 
         btnBack = findViewById<Button>(R.id.btnBack)
         btnBack.setOnClickListener{
-            val intent = Intent(this, MainMenu::class.java)
+            val intent = Intent(this, Notes::class.java)
             startActivity(intent)
         }
-
 
     }
 }

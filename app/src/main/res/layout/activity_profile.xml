@@ -45,13 +45,17 @@
 
     <TextView
         android:id="@+id/tvYourBYear"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="@font/chewy"
         android:text="Sample"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvYourBDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvYourBDay"
+        app:layout_constraintTop_toTopOf="@+id/tvYourBDay" />
 
     <TextView
         android:id="@+id/tvYourLName"
@@ -81,23 +85,29 @@
 
     <TextView
         android:id="@+id/tvYourBMonth"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="@font/chewy"
         android:text="Sample"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvBirthLabel"
+        app:layout_constraintEnd_toStartOf="@+id/tvYourBDay"
+        app:layout_constraintStart_toEndOf="@+id/tvBirthLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvBirthLabel" />
 
     <TextView
         android:id="@+id/tvBirthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/chewy"
         android:text="Birthday:"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="474dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLNameLabel" />
 
     <TextView
         android:id="@+id/tvMNameLabel"
@@ -113,13 +123,17 @@
 
     <TextView
         android:id="@+id/tvYourBDay"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="@font/chewy"
         android:text="Sample"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="478dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvYourBMonth"
+        app:layout_constraintEnd_toStartOf="@+id/tvYourBYear"
+        app:layout_constraintStart_toEndOf="@+id/tvYourBMonth"
+        app:layout_constraintTop_toTopOf="@+id/tvYourBMonth" />
 
     <TextView
         android:id="@+id/tvYourFname"
@@ -152,7 +166,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/chewy"
         android:text="First Name:"
         android:textSize="20sp"
@@ -161,22 +175,28 @@
 
     <TextView
         android:id="@+id/tvYourEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="@font/chewy"
         android:text="Sample"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="528dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvEmailLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvEmailLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvEmailLabel" />
 
     <TextView
         android:id="@+id/tvEmailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/chewy"
         android:text="Email:"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="528dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBirthLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
