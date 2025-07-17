@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:background="@color/Background">
+
+    <ImageView
+        android:id="@+id/imgChiikawa"
+        android:layout_width="162dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:srcCompat="@drawable/adorablecutiechiikawa" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/tilt_warp"
+        android:text="PROFILE"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Back"
+        android:textColor="#789DB1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvYourBYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="340dp"
+        tools:layout_editor_absoluteY="481dp" />
+
+    <TextView
+        android:id="@+id/tvYourLName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLNameLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvLNameLabel" />
+
+    <TextView
+        android:id="@+id/tvYourMName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvMNameLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvMNameLabel" />
+
+    <TextView
+        android:id="@+id/tvYourBMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="481dp" />
+
+    <TextView
+        android:id="@+id/tvBirthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Birthday:"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="474dp" />
+
+    <TextView
+        android:id="@+id/tvMNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/chewy"
+        android:text="Middle Name:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFnameLabel" />
+
+    <TextView
+        android:id="@+id/tvYourBDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="478dp" />
+
+    <TextView
+        android:id="@+id/tvYourFname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFnameLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFnameLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvFnameLabel" />
+
+    <TextView
+        android:id="@+id/tvLNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/chewy"
+        android:text="Last Name:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMNameLabel" />
+
+    <TextView
+        android:id="@+id/tvFnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chewy"
+        android:text="First Name:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgChiikawa" />
+
+    <TextView
+        android:id="@+id/tvYourEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Sample"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="528dp" />
+
+    <TextView
+        android:id="@+id/tvEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Email:"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="528dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

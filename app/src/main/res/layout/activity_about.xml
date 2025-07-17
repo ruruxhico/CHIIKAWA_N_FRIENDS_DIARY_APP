@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".About"
+    android:background="@color/Background">
+
+    <ImageView
+        android:id="@+id/imgBjea"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:srcCompat="@drawable/pbjea" />
+
+    <ImageView
+        android:id="@+id/imgRed"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBjea"
+        tools:srcCompat="@drawable/pred" />
+
+    <ImageView
+        android:id="@+id/imgAielle"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgRed"
+        tools:srcCompat="@drawable/paielle" />
+
+    <ImageView
+        android:id="@+id/imgSophia"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAielle"
+        tools:srcCompat="@drawable/psophia" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/tilt_warp"
+        android:text="MEET THE DEVELOPERS"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Back"
+        android:textColor="#789DB1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBjea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/chewy"
+        android:text="Bjea Marelle A. Dantic"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBjea"
+        app:layout_constraintStart_toEndOf="@+id/imgBjea"
+        app:layout_constraintTop_toTopOf="@+id/imgBjea" />
+
+    <TextView
+        android:id="@+id/tvRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/chewy"
+        android:text="Forest Red R. Ibarrientos"
+        app:layout_constraintBottom_toBottomOf="@+id/imgRed"
+        app:layout_constraintEnd_toStartOf="@+id/imgRed"
+        app:layout_constraintTop_toTopOf="@+id/imgRed" />
+
+    <TextView
+        android:id="@+id/tvAielle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/chewy"
+        android:text="Danielle Jazmine Aiah N. Mercado"
+        app:layout_constraintBottom_toBottomOf="@+id/imgAielle"
+        app:layout_constraintStart_toEndOf="@+id/imgAielle"
+        app:layout_constraintTop_toTopOf="@+id/imgAielle" />
+
+    <TextView
+        android:id="@+id/tvSophia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/chewy"
+        android:text="Sophia Isabelle B. Paypon"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSophia"
+        app:layout_constraintEnd_toStartOf="@+id/imgSophia"
+        app:layout_constraintTop_toTopOf="@+id/imgSophia" />
+</androidx.constraintlayout.widget.ConstraintLayout>
