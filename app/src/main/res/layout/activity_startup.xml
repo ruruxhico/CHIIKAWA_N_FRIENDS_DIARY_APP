@@ -5,29 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Startup">
+    tools:context=".Startup"
+    android:background="@color/Background">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgChiikawa"
         android:layout_width="184dp"
         android:layout_height="220dp"
-        app:srcCompat="@drawable/adorablecutiechiikawa"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="123dp" />
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/adorablecutiechiikawa" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chiikawa's Diary"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="372dp" />
+        android:layout_marginTop="18dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:outlineSpotShadowColor="#EDEDED"
+        android:text="Welcome to\n Chiikawa and Friends'\n Diary!"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgChiikawa" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/transparent"
+        android:fontFamily="@font/tilt_warp"
+        android:outlineSpotShadowColor="#00FFFFFF"
         android:text="Tap to start"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="506dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

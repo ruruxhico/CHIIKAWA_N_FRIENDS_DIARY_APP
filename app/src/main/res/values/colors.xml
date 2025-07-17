@@ -10,4 +10,5 @@
     <color name="Background">#799EB2</color>
     <color name="Chiikawa">#F5F5F5</color>
     <color name="Yellow">#F4E6C6</color>
+    <color name="transparent">#00000000</color>
 </resources>
