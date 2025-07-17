@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Background"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/tilt_warp"
+        android:text="SIGNUP SCREEN"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgChiikawa"
+        android:layout_width="184dp"
+        android:layout_height="220dp"
+        android:src="@drawable/adorablecutiechiikawa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:radius="20" />
+
+    <EditText
+        android:id="@+id/etYourFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="First Name"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
+
+    <EditText
+        android:id="@+id/etYourPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Password"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourEmail" />
+
+    <EditText
+        android:id="@+id/etYourLName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourMName" />
+
+    <EditText
+        android:id="@+id/etYourMName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Middle Name"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourFName" />
+
+    <EditText
+        android:id="@+id/etYourBYear"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Birth Year(xxxx)"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etYourBMonth"
+        app:layout_constraintTop_toTopOf="@+id/etYourBMonth" />
+
+    <EditText
+        android:id="@+id/editTextText14"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Birth Day"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/etYourBMonth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourLName" />
+
+    <EditText
+        android:id="@+id/etYourEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Email"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText14" />
+
+    <EditText
+        android:id="@+id/etYourBMonth"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Birth Month(xx)"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/etYourBYear"
+        app:layout_constraintStart_toEndOf="@+id/editTextText14"
+        app:layout_constraintTop_toTopOf="@+id/editTextText14" />
+
+    <EditText
+        android:id="@+id/etYourConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:fontFamily="@font/chewy"
+        android:hint="Confirm Password"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourPassword" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="SignUp"
+        android:textColor="#789DB1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etYourConfirmPassword" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Back"
+        android:textColor="#789DB1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
