@@ -8,6 +8,7 @@
     tools:context=".MainMenu"
     android:background="@color/Background">
 
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="700dp"
@@ -77,83 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnFirst"
-        android:layout_width="300dp"
+    <CalendarView
+        android:id="@+id/cvCalendar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="#789DB1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <Button
-        android:id="@+id/btnSecond"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="#789DB1"
-        app:layout_constraintEnd_toEndOf="@+id/btnFirst"
-        app:layout_constraintStart_toStartOf="@+id/btnFirst"
-        app:layout_constraintTop_toBottomOf="@+id/btnFirst" />
-
-    <Button
-        android:id="@+id/btnThird"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="#789DB1"
-        app:layout_constraintEnd_toEndOf="@+id/btnSecond"
-        app:layout_constraintStart_toStartOf="@+id/btnSecond"
-        app:layout_constraintTop_toBottomOf="@+id/btnSecond" />
-
-    <Button
-        android:id="@+id/btnFourth"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="#789DB1"
-        app:layout_constraintEnd_toEndOf="@+id/btnThird"
-        app:layout_constraintStart_toStartOf="@+id/btnThird"
-        app:layout_constraintTop_toBottomOf="@+id/btnThird" />
-
-    <Button
-        android:id="@+id/btnFifth"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="#789DB1"
-        app:layout_constraintEnd_toEndOf="@+id/btnFourth"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnFourth"
-        app:layout_constraintTop_toBottomOf="@+id/btnFourth" />
-
-    <Button
-        android:id="@+id/btnSixth"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
-        android:textColor="@color/Background"
-        app:layout_constraintEnd_toEndOf="@+id/btnFifth"
-        app:layout_constraintStart_toStartOf="@+id/btnFifth"
-        app:layout_constraintTop_toBottomOf="@+id/btnFifth" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        android:background="@color/Yellow"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
