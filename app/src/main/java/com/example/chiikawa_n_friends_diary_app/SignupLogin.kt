@@ -10,8 +10,9 @@ import androidx.core.view.WindowInsetsCompat
 
 class SignupLogin : AppCompatActivity() {
 
-    lateinit var btnSignUp: Button
-    lateinit var btnLogin: Button
+    private lateinit var btnSignUp: Button
+    private lateinit var btnLogin: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +24,21 @@ class SignupLogin : AppCompatActivity() {
             insets
         }
 
+        //init UI elements
         btnSignUp = findViewById<Button>(R.id.btnSignUp)
+        btnLogin = findViewById<Button>(R.id.btnLogin)
+
+
         btnSignUp.setOnClickListener{
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
-        /*
-        btnLogin = findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener{
-            val intent = Intent(this, MainMenu::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
-        */
+
 
     }
 }

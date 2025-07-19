@@ -7,13 +7,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainMenu : AppCompatActivity() {
 
     lateinit var btnProfile: Button
     lateinit var btnAbout: Button
     lateinit var btnNotes: Button
-    lateinit var btnBack: Button
+    lateinit var btnLogout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class MainMenu : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
 
         btnProfile = findViewById<Button>(R.id.btnProfile)
         btnProfile.setOnClickListener{
@@ -44,11 +47,13 @@ class MainMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener{
-            val intent = Intent(this, SignUp::class.java)
+        btnLogout = findViewById<Button>(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(this, Startup::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            finish()
         }
-
     }
 }

@@ -150,14 +150,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btnNotes" />
 
     <Button
-        android:id="@+id/btnBack"
+        android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
-        android:text="Back"
-        android:textColor="#789DB1"
+        android:text="Logout"
+        android:textColor="#B32020"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

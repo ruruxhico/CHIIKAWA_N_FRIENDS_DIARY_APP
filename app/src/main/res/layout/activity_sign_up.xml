@@ -57,11 +57,23 @@
         android:ems="10"
         android:fontFamily="@font/chewy"
         android:hint="Password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etYourEmail" />
+
+    <ImageView
+        android:id="@+id/ivToggleYourPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:src="@drawable/ic_eye_closed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
     <EditText
         android:id="@+id/etYourLName"
@@ -133,7 +145,7 @@
         android:ems="10"
         android:fontFamily="@font/chewy"
         android:hint="Email"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -163,11 +175,23 @@
         android:ems="10"
         android:fontFamily="@font/chewy"
         android:hint="Confirm Password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etYourPassword" />
+
+    <ImageView
+        android:id="@+id/ivToggleYourConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="432dp"
+        android:src="@drawable/ic_eye_closed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
     <Button
         android:id="@+id/btnSignUp"
