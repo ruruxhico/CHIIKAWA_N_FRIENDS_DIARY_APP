@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import androidx.core.content.edit
 
 class SignUp : AppCompatActivity() {
 
@@ -79,7 +80,7 @@ class SignUp : AppCompatActivity() {
 
         btnSignUp = findViewById<Button>(R.id.btnSignUp)
         btnSignUp.setOnClickListener{
-            val email = etYourEmail.text.toString()
+            val email = etYourEmail.text.toString().trim()
             val password = etYourPassword.text.toString()
             val confirmPassword = etYourConfirmPassword.text.toString()
 
@@ -93,12 +94,28 @@ class SignUp : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (password.length < 6) { // Firebase usually requires at least 6 characters
+                Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainMenu::class.java))
-                        finish()
+                        val firebaseUser = auth.currentUser
+                        firebaseUser?.let {
+                            val userID = it.uid
+                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                            sharedPref.edit{
+                                putString("CURRENT_USER", userID)
+                                apply()
+                            }
+                            Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, MainMenu::class.java))
+                            finish()
+                        } ?: run {
+                            Toast.makeText(this, "Sign Up successful, but user ID not found.", Toast.LENGTH_LONG).show()
+                        }
                     } else {
                         Toast.makeText(this, "Sign Up Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }

@@ -42,11 +42,16 @@ class Write : AppCompatActivity() {
         //make key for a diary entry
         val key = "${userID}_${year}-${month + 1}-$day"
 
+        val sharedPref = getSharedPreferences("DiaryEntries", MODE_PRIVATE)
+        val savedEntry = sharedPref.getString(key, "")
+        etmWrite.setText(savedEntry)
+
         //back button
         btnBack = findViewById<Button>(R.id.btnBack)
         btnBack.setOnClickListener{
             val intent = Intent(this, Notes::class.java)
             startActivity(intent)
+            finish()
         }
 
         //save entry
@@ -55,9 +60,9 @@ class Write : AppCompatActivity() {
             val entry = etmWrite.text.toString()
 
             if (entry.isNotBlank()) {
-                val sharedPref = getSharedPreferences("DiaryEntries", MODE_PRIVATE)
                 sharedPref.edit {
                     putString(key, entry)
+                    apply()
                 }
 
                 Toast.makeText(this, "Entry saved!", Toast.LENGTH_SHORT).show()
@@ -65,6 +70,7 @@ class Write : AppCompatActivity() {
                 // Go back to Notes to update UI
                 val intent = Intent(this, Notes::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Please write something!", Toast.LENGTH_SHORT).show()
             }

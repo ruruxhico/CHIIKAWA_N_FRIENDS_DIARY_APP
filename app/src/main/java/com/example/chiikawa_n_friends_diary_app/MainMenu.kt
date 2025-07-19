@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import androidx.core.content.edit
 
 class MainMenu : AppCompatActivity() {
 
@@ -27,6 +28,13 @@ class MainMenu : AppCompatActivity() {
             insets
         }
 
+        if (Firebase.auth.currentUser == null) {
+            val intent = Intent(this, Startup::class.java) // Or your SignupLogin activity
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+            return // Stop further execution of onCreate
+        }
 
         btnProfile = findViewById<Button>(R.id.btnProfile)
         btnProfile.setOnClickListener{
@@ -50,10 +58,20 @@ class MainMenu : AppCompatActivity() {
         btnLogout = findViewById<Button>(R.id.btnLogout)
         btnLogout.setOnClickListener {
             Firebase.auth.signOut()
+
+            //clear current user
+            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+            sharedPref.edit {
+                remove("CURRENT_USER") // Remove the specific key
+                // Alternatively: putString("CURRENT_USER", "guest") if you truly need a default "guest" state
+                apply() // Apply asynchronously
+            }
+
             val intent = Intent(this, Startup::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
+
     }
 }

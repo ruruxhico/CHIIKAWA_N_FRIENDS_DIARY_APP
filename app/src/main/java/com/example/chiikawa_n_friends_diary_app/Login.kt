@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import androidx.core.content.edit
 
 
 class Login : AppCompatActivity() {
@@ -70,10 +71,22 @@ class Login : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Login success
-                        val intent = Intent(this, MainMenu::class.java)
-                        startActivity(intent)
-                        finish() // optional: prevents going back to login
+                        // Login success then save user UID in SharedPrefs
+                        val firebaseUser = auth.currentUser
+                        firebaseUser?.let{
+                            val userId = it.uid
+                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                            sharedPref.edit {
+                                putString("CURRENT_USER", userId)
+                                apply()
+                        }
+                            Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, MainMenu::class.java)
+                            startActivity(intent)
+                            finish()
+                        } ?: run {
+                            Toast.makeText(this, "Login successful, but user ID not found.", Toast.LENGTH_LONG).show()
+                        }
                     } else {
                         // Login failed
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "569252379758",
+    "project_id": "chiikawadiaryapp",
+    "storage_bucket": "chiikawadiaryapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569252379758:android:25de8065195d7da228ba7f",
+        "android_client_info": {
+          "package_name": "com.example.chiikawa_n_friends_diary_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQM9yGdLtek5fnGlrKKjVjj80F5GocAZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
