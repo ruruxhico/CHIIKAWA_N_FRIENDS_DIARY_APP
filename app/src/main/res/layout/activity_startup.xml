@@ -27,7 +27,7 @@
         android:fontFamily="@font/chewy"
         android:gravity="center"
         android:outlineSpotShadowColor="#EDEDED"
-        android:text="Welcome to\n Chiikawa and Friends'\n Diary!"
+        android:text="@string/welcome_splash"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:backgroundTint="@color/transparent"
         android:fontFamily="@font/tilt_warp"
         android:outlineSpotShadowColor="@color/transparent"
-        android:text="Tap to start"
+        android:text="@string/tap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />

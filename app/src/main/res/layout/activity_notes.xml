@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:fontFamily="@font/tilt_warp"
-        android:text="NOTES"
+        android:text="@string/notes_title"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:textColor="#789DB1"
-        android:text="Back"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

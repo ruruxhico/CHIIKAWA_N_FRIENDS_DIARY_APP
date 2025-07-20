@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import androidx.core.content.edit
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class Login : AppCompatActivity() {
@@ -25,6 +26,8 @@ class Login : AppCompatActivity() {
     private lateinit var etLoginPassword: EditText
     private lateinit var auth: FirebaseAuth
     private var isLoginPasswordVisible = false
+
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class Login : AppCompatActivity() {
     }
         //initialise firebase auth
         auth = Firebase.auth
+        db = FirebaseFirestore.getInstance()
 
         etLoginPassword = findViewById(R.id.etLoginPassword)
         etLoginEmail = findViewById(R.id.etLoginEmail)
@@ -71,24 +75,46 @@ class Login : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Login success then save user UID in SharedPrefs
                         val firebaseUser = auth.currentUser
-                        firebaseUser?.let{
-                            val userId = it.uid
-                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
-                            sharedPref.edit {
-                                putString("CURRENT_USER", userId)
-                                apply()
-                        }
-                            Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainMenu::class.java)
-                            startActivity(intent)
-                            finish()
+                        firebaseUser?.let{ user ->
+                            val userId = user.uid
+
+                            // --- NEW: Fetch user profile from Firestore ---
+                            db.collection("users").document(userId).get()
+                                .addOnSuccessListener { document ->
+                                    if (document.exists()) {
+                                        // Save fetched profile data to SharedPreferences
+                                        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                                        sharedPref.edit {
+                                            putString("CURRENT_USER", userId) // Always update UID
+                                            putString("FIRST_NAME", document.getString("firstName"))
+                                            putString("MIDDLE_NAME", document.getString("middleName"))
+                                            putString("LAST_NAME", document.getString("lastName"))
+                                            putString("EMAIL", document.getString("email"))
+                                            putString("BIRTH_DAY", document.getString("birthDay"))
+                                            putString("BIRTH_MONTH", document.getString("birthMonth"))
+                                            putString("BIRTH_YEAR", document.getString("birthYear"))
+                                            apply()
+                                        }
+                                        Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this, MainMenu::class.java))
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "Login successful, but profile data not found in Firestore. Please sign up again.", Toast.LENGTH_LONG).show()
+                                        // Optional: Sign out the user if profile data is missing
+                                        auth.signOut()
+                                    }
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Login successful, but failed to load profile data: ${e.message}", Toast.LENGTH_LONG).show()
+                                    // Proceed to MainMenu without profile data, or sign out and show error
+                                    startActivity(Intent(this, MainMenu::class.java)) // Decide whether to proceed or block
+                                    finish()
+                                }
                         } ?: run {
                             Toast.makeText(this, "Login successful, but user ID not found.", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        // Login failed
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }

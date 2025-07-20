@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/tilt_warp"
-        android:text="MEET THE DEVELOPERS"
+        android:text="@string/meet_devs"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="#789DB1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/chewy"
-        android:text="Bjea Marelle A. Dantic"
+        android:text="@string/bjea"
         app:layout_constraintBottom_toBottomOf="@+id/imgBjea"
         app:layout_constraintStart_toEndOf="@+id/imgBjea"
         app:layout_constraintTop_toTopOf="@+id/imgBjea" />
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/chewy"
-        android:text="Forest Red R. Ibarrientos"
+        android:text="@string/red"
         app:layout_constraintBottom_toBottomOf="@+id/imgRed"
         app:layout_constraintEnd_toStartOf="@+id/imgRed"
         app:layout_constraintTop_toTopOf="@+id/imgRed" />
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/chewy"
-        android:text="Danielle Jazmine Aiah N. Mercado"
+        android:text="@string/ayel"
         app:layout_constraintBottom_toBottomOf="@+id/imgAielle"
         app:layout_constraintStart_toEndOf="@+id/imgAielle"
         app:layout_constraintTop_toTopOf="@+id/imgAielle" />
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/chewy"
-        android:text="Sophia Isabelle B. Paypon"
+        android:text="@string/phia"
         app:layout_constraintBottom_toBottomOf="@+id/imgSophia"
         app:layout_constraintEnd_toStartOf="@+id/imgSophia"
         app:layout_constraintTop_toTopOf="@+id/imgSophia" />

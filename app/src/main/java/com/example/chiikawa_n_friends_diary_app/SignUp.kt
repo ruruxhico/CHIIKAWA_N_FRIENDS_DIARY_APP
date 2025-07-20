@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUp : AppCompatActivity() {
 
@@ -32,7 +33,9 @@ class SignUp : AppCompatActivity() {
     lateinit var etYourLName: EditText
     lateinit var etYourBYear: EditText
     lateinit var etYourBMonth: EditText
-    lateinit var editTextText14: EditText
+    lateinit var etYourBDay: EditText
+
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,7 @@ class SignUp : AppCompatActivity() {
         }
 
         auth = Firebase.auth
+        db = FirebaseFirestore.getInstance()
 
         etYourEmail = findViewById(R.id.etYourEmail)
         etYourPassword = findViewById(R.id.etYourPassword)
@@ -54,7 +58,7 @@ class SignUp : AppCompatActivity() {
         etYourLName = findViewById(R.id.etYourLName)
         etYourBYear = findViewById(R.id.etYourBYear)
         etYourBMonth = findViewById(R.id.etYourBMonth)
-        editTextText14 = findViewById(R.id.editTextText14)
+        etYourBDay = findViewById(R.id.editTextText14)
 
         //show and hide pass
         val ivToggle = findViewById<ImageView>(R.id.ivToggleYourPassword)
@@ -94,7 +98,16 @@ class SignUp : AppCompatActivity() {
             val password = etYourPassword.text.toString()
             val confirmPassword = etYourConfirmPassword.text.toString()
 
-            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            //fetch input details
+            val fName = etYourFName.text.toString().trim()
+            val mName = etYourMName.text.toString().trim()
+            val lName = etYourLName.text.toString().trim()
+            val bDay = etYourBDay.text.toString().trim()
+            val bMonth = etYourBMonth.text.toString().trim()
+            val bYear = etYourBYear.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() ||
+                fName.isEmpty() || mName.isEmpty() || lName.isEmpty() || bDay.isEmpty() || bMonth.isEmpty() || bYear.isEmpty()) {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -111,22 +124,46 @@ class SignUp : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val firebaseUser = auth.currentUser
-                        firebaseUser?.let {
-                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
-                            sharedPref.edit {
-                                putString("CURRENT_USER", it.uid)
-                                putString("FIRST_NAME", etYourFName.text.toString())
-                                putString("MIDDLE_NAME", etYourMName.text.toString())
-                                putString("LAST_NAME", etYourLName.text.toString())
-                                putString("EMAIL", etYourEmail.text.toString())
-                                putString("BIRTH_DAY", editTextText14.text.toString())
-                                putString("BIRTH_MONTH", etYourBMonth.text.toString())
-                                putString("BIRTH_YEAR", etYourBYear.text.toString())
-                                apply()
-                            }
-                            Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, MainMenu::class.java))
-                            finish()
+                        firebaseUser?.let { user ->
+                            val userId = user.uid
+
+                            // 1. Create a HashMap for user profile data
+                            val userProfile = hashMapOf(
+                                "firstName" to fName,
+                                "middleName" to mName,
+                                "lastName" to lName,
+                                "email" to email,
+                                "birthDay" to bDay,
+                                "birthMonth" to bMonth,
+                                "birthYear" to bYear
+                            )
+
+                            // 2. Save user profile data to Firestore
+                            db.collection("users").document(userId)
+                                .set(userProfile) // Use set() to create/overwrite user document
+                                .addOnSuccessListener {
+                                    // 3. Save to SharedPreferences for immediate session (optional, but good for quick UI updates)
+                                    val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                                    sharedPref.edit {
+                                        putString("CURRENT_USER", userId)
+                                        putString("FIRST_NAME", fName)
+                                        putString("MIDDLE_NAME", mName)
+                                        putString("LAST_NAME", lName)
+                                        putString("EMAIL", email)
+                                        putString("BIRTH_DAY", bDay)
+                                        putString("BIRTH_MONTH", bMonth)
+                                        putString("BIRTH_YEAR", bYear)
+                                        apply()
+                                    }
+                                    Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, MainMenu::class.java))
+                                    finish()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Failed to save profile: ${e.message}", Toast.LENGTH_LONG).show()
+                                    // Consider logging out the user from Firebase Auth if profile save fails
+                                    auth.signOut()
+                                }
                         } ?: run {
                             Toast.makeText(this, "Sign Up successful, but user ID not found.", Toast.LENGTH_LONG).show()
                         }
@@ -135,6 +172,7 @@ class SignUp : AppCompatActivity() {
                     }
                 }
         }
+
 
         btnBack = findViewById(R.id.btnBack)
         btnBack.setOnClickListener {
