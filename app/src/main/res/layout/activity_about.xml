@@ -9,56 +9,62 @@
     android:background="@color/Background">
 
     <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="491dp"
+        android:layout_height="817dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_des" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="-15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/about_des_top" />
+
+    <ImageView
         android:id="@+id/imgBjea"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:srcCompat="@drawable/pbjea" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20"
+        app:srcCompat="@drawable/bjea" />
 
     <ImageView
         android:id="@+id/imgRed"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBjea"
-        tools:srcCompat="@drawable/pred" />
+        app:srcCompat="@drawable/red" />
 
     <ImageView
         android:id="@+id/imgAielle"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgRed"
-        tools:srcCompat="@drawable/paielle" />
+        app:srcCompat="@drawable/ayel" />
 
     <ImageView
         android:id="@+id/imgSophia"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgAielle"
-        tools:srcCompat="@drawable/psophia" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/tilt_warp"
-        android:text="@string/meet_devs"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/phia" />
 
     <Button
         android:id="@+id/btnBack"
@@ -116,4 +122,26 @@
         app:layout_constraintBottom_toBottomOf="@+id/imgSophia"
         app:layout_constraintEnd_toStartOf="@+id/imgSophia"
         app:layout_constraintTop_toTopOf="@+id/imgSophia" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="291dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/developers" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="-20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/about_des_bottom" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

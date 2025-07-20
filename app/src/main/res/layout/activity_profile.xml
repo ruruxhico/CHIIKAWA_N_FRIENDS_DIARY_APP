@@ -9,26 +9,26 @@
     android:background="@color/Background">
 
     <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="601dp"
+        android:layout_height="796dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="-50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_design" />
+
+    <ImageView
         android:id="@+id/imgChiikawa"
         android:layout_width="162dp"
         android:layout_height="179dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:srcCompat="@drawable/adorablecutiechiikawa" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/tilt_warp"
-        android:text="@string/profile"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnBack"
@@ -193,5 +193,40 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBirthLabel" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_des_top" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="-20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/profile_des" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/tilt_warp"
+        android:text="@string/profile"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
