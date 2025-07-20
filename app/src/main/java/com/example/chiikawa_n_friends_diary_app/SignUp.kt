@@ -9,12 +9,12 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import androidx.core.content.edit
 
 class SignUp : AppCompatActivity() {
 
@@ -27,23 +27,34 @@ class SignUp : AppCompatActivity() {
     private var isPasswordVisible = false
     private var isConfirmPasswordVisible = false
 
+    lateinit var etYourFName: EditText
+    lateinit var etYourMName: EditText
+    lateinit var etYourLName: EditText
+    lateinit var etYourBYear: EditText
+    lateinit var etYourBMonth: EditText
+    lateinit var editTextText14: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
-        //init firebase auth
         auth = Firebase.auth
 
-        //init fields
         etYourEmail = findViewById(R.id.etYourEmail)
         etYourPassword = findViewById(R.id.etYourPassword)
         etYourConfirmPassword = findViewById(R.id.etYourConfirmPassword)
+        etYourFName = findViewById(R.id.etYourFName)
+        etYourMName = findViewById(R.id.etYourMName)
+        etYourLName = findViewById(R.id.etYourLName)
+        etYourBYear = findViewById(R.id.etYourBYear)
+        etYourBMonth = findViewById(R.id.etYourBMonth)
+        editTextText14 = findViewById(R.id.editTextText14)
 
         //show and hide pass
         val ivToggle = findViewById<ImageView>(R.id.ivToggleYourPassword)
@@ -77,9 +88,8 @@ class SignUp : AppCompatActivity() {
             etYourConfirmPassword.setSelection(etYourConfirmPassword.text.length)
         }
 
-
-        btnSignUp = findViewById<Button>(R.id.btnSignUp)
-        btnSignUp.setOnClickListener{
+        btnSignUp = findViewById(R.id.btnSignUp)
+        btnSignUp.setOnClickListener {
             val email = etYourEmail.text.toString().trim()
             val password = etYourPassword.text.toString()
             val confirmPassword = etYourConfirmPassword.text.toString()
@@ -88,13 +98,11 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            if (password != confirmPassword){
+            if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            if (password.length < 6) { // Firebase usually requires at least 6 characters
+            if (password.length < 6) {
                 Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -104,10 +112,16 @@ class SignUp : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val firebaseUser = auth.currentUser
                         firebaseUser?.let {
-                            val userID = it.uid
                             val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
-                            sharedPref.edit{
-                                putString("CURRENT_USER", userID)
+                            sharedPref.edit {
+                                putString("CURRENT_USER", it.uid)
+                                putString("FIRST_NAME", etYourFName.text.toString())
+                                putString("MIDDLE_NAME", etYourMName.text.toString())
+                                putString("LAST_NAME", etYourLName.text.toString())
+                                putString("EMAIL", etYourEmail.text.toString())
+                                putString("BIRTH_DAY", editTextText14.text.toString())
+                                putString("BIRTH_MONTH", etYourBMonth.text.toString())
+                                putString("BIRTH_YEAR", etYourBYear.text.toString())
                                 apply()
                             }
                             Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
@@ -122,12 +136,10 @@ class SignUp : AppCompatActivity() {
                 }
         }
 
-
-        btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener{
-            val intent = Intent(this, SignupLogin::class.java)
-            startActivity(intent)
+        btnBack = findViewById(R.id.btnBack)
+        btnBack.setOnClickListener {
+            startActivity(Intent(this, SignupLogin::class.java))
+            finish()
         }
-
     }
 }

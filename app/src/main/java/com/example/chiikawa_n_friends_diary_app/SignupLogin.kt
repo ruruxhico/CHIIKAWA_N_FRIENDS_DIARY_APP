@@ -3,6 +3,7 @@ package com.example.chiikawa_n_friends_diary_app
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,6 +24,8 @@ class SignupLogin : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
 
         //init UI elements
         btnSignUp = findViewById<Button>(R.id.btnSignUp)

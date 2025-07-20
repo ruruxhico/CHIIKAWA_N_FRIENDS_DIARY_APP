@@ -1,76 +1,74 @@
 package com.example.chiikawa_n_friends_diary_app
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.content.edit
 
 class Write : AppCompatActivity() {
 
-    lateinit var btnBack: Button
-    lateinit var btnSave: Button
-    lateinit var etmWrite: EditText
+    private lateinit var btnBack: Button
+    private lateinit var btnSave: Button
+    private lateinit var etmWrite: EditText
+    private lateinit var tvWrite: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_write)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
-        //init
         etmWrite = findViewById(R.id.etmWrite)
+        btnBack = findViewById(R.id.btnBack)
+        btnSave = findViewById(R.id.btnSave)
+        tvWrite = findViewById(R.id.tvEntry) // Update this ID if your layout uses a different one
 
-        //get date
+        // Load stored text if any
         val year = intent.getIntExtra("EXTRA_YEAR", 0)
         val month = intent.getIntExtra("EXTRA_MONTH", 0)
         val day = intent.getIntExtra("EXTRA_DAY", 0)
-
-        //current user
         val userID = getSharedPreferences("UserSession", MODE_PRIVATE)
             .getString("CURRENT_USER", "guest")
-
-        //make key for a diary entry
         val key = "${userID}_${year}-${month + 1}-$day"
-
         val sharedPref = getSharedPreferences("DiaryEntries", MODE_PRIVATE)
-        val savedEntry = sharedPref.getString(key, "")
-        etmWrite.setText(savedEntry)
+        val savedEntry = sharedPref.getString(key, "") ?: ""
+        tvWrite.text = savedEntry
 
-        //back button
-        btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener{
-            val intent = Intent(this, Notes::class.java)
-            startActivity(intent)
+        btnBack.setOnClickListener {
+            // simply return to previous activity
             finish()
         }
 
-        //save entry
-        btnSave = findViewById<Button>(R.id.btnSave)
         btnSave.setOnClickListener {
-            val entry = etmWrite.text.toString()
+            val newText = etmWrite.text.toString().trim()
+            if (newText.isNotBlank()) {
+                val existing = sharedPref.getString(key, "") ?: ""
+                val updated = if (existing.isEmpty()) {
+                    newText
+                } else {
+                    "$existing\n$newText"
+                }
 
-            if (entry.isNotBlank()) {
                 sharedPref.edit {
-                    putString(key, entry)
+                    putString(key, updated)
                     apply()
                 }
 
-                Toast.makeText(this, "Entry saved!", Toast.LENGTH_SHORT).show()
-
-                // Go back to Notes to update UI
-                val intent = Intent(this, Notes::class.java)
-                startActivity(intent)
-                finish()
+                // Update UI without finishing
+                tvWrite.text = updated
+                etmWrite.text.clear()
+                Toast.makeText(this, "Entry appended!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Please write something!", Toast.LENGTH_SHORT).show()
             }

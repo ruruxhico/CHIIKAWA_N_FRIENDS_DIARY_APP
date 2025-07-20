@@ -1,8 +1,10 @@
 package com.example.chiikawa_n_friends_diary_app
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,23 +12,47 @@ import androidx.core.view.WindowInsetsCompat
 
 class Profile : AppCompatActivity() {
 
-    lateinit var btnBack: Button
+    private lateinit var btnBack: Button
+    private lateinit var tvYourFname: TextView
+    private lateinit var tvYourMName: TextView
+    private lateinit var tvYourLName: TextView
+    private lateinit var tvYourEmail: TextView
+    private lateinit var tvYourBDay: TextView
+    private lateinit var tvYourBMonth: TextView
+    private lateinit var tvYourBYear: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_profile)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
-        btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener{
-            val intent = Intent(this, MainMenu::class.java)
-            startActivity(intent)
-        }
+        tvYourFname = findViewById(R.id.tvYourFname)
+        tvYourMName = findViewById(R.id.tvYourMName)
+        tvYourLName = findViewById(R.id.tvYourLName)
+        tvYourEmail = findViewById(R.id.tvYourEmail)
+        tvYourBDay = findViewById(R.id.tvYourBDay)
+        tvYourBMonth = findViewById(R.id.tvYourBMonth)
+        tvYourBYear = findViewById(R.id.tvYourBYear)
+        btnBack = findViewById(R.id.btnBack)
 
+        // Retrieve from SharedPreferences
+        val sp: SharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+        tvYourFname.text  = sp.getString("FIRST_NAME", "")
+        tvYourMName.text  = sp.getString("MIDDLE_NAME", "")
+        tvYourLName.text  = sp.getString("LAST_NAME", "")
+        tvYourEmail.text  = sp.getString("EMAIL", "")
+        tvYourBDay.text   = sp.getString("BIRTH_DAY", "")
+        tvYourBMonth.text = sp.getString("BIRTH_MONTH", "")
+        tvYourBYear.text  = sp.getString("BIRTH_YEAR", "")
+
+        btnBack.setOnClickListener {
+            startActivity(Intent(this, MainMenu::class.java))
+            finish()
+        }
     }
 }
