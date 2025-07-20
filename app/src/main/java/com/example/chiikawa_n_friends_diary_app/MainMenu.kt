@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 class MainMenu : AppCompatActivity() {
 
@@ -26,8 +27,13 @@ class MainMenu : AppCompatActivity() {
     private lateinit var tvDate: TextView
     private lateinit var tvTime: TextView
 
-    private val dateFormatter = SimpleDateFormat("MM-dd-yy", Locale.getDefault())
-    private val timeFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
+    private val phTimeZone = TimeZone.getTimeZone("Asia/Manila")
+    private val dateFormatter = SimpleDateFormat("MM-dd-yy", Locale.getDefault()).apply {
+        timeZone = phTimeZone
+    }
+    private val timeFormatter = SimpleDateFormat("HH:mm", Locale.getDefault()).apply {
+        timeZone = phTimeZone
+    }
 
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var updateRunnable: Runnable
