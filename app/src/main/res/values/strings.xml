@@ -17,7 +17,7 @@
     <string name="logout">LOGOUT</string>
     <string name="sign_up">SIGN UP</string>
     <string name="meet_devs">MEET THE DEVELOPERS</string>
-    <string name="welcome_splash">WELCOME TO WHISPERING PAGES</string>
+    <string name="welcome_splash">WELCOME TO \n WHISPERING PAGES</string>
     <string name="sl_splash">WHISPERING PAGES</string>
     <string name="tap">TAP TO START</string>
     <string name="notes_title">YOUR NOTES</string>
@@ -34,7 +34,7 @@
     <string name="month">Month (xx)</string>
     <string name="year">Year(xxxx)</string>
     <string name="confirm">Confirm Password</string>
-    <string name="none">null</string>
+    <string name="home">HOME</string>
     <string name="redText">Cloud Engineer, DevOps, microservices</string>
     <string name="bjeaText">UI/UX design, React, Flutter</string>
     <string name="ayelText">Algorithms, data structures, Kotlin/Java</string>

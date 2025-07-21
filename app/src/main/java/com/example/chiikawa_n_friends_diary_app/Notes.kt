@@ -3,6 +3,7 @@ package com.example.chiikawa_n_friends_diary_app
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.CalendarView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class Notes : AppCompatActivity() {
 
-    private lateinit var btnBack: Button
+    private lateinit var ivBack: ImageView
     private lateinit var cvCalendar: CalendarView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +26,8 @@ class Notes : AppCompatActivity() {
             insets
         }
 
-        btnBack = findViewById(R.id.btnBack)
-        btnBack.setOnClickListener {
+        ivBack = findViewById(R.id.ivBack)
+        ivBack.setOnClickListener {
             startActivity(Intent(this, MainMenu::class.java))
         }
 

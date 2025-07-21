@@ -3,8 +3,8 @@ package com.example.chiikawa_n_friends_diary_app
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,7 +12,9 @@ import androidx.core.view.WindowInsetsCompat
 
 class Profile : AppCompatActivity() {
 
-    private lateinit var btnBack: Button
+
+    private lateinit var ivBack: ImageView
+
     private lateinit var tvYourFname: TextView
     private lateinit var tvYourMName: TextView
     private lateinit var tvYourLName: TextView
@@ -38,7 +40,7 @@ class Profile : AppCompatActivity() {
         tvYourBDay = findViewById(R.id.tvYourBDay)
         tvYourBMonth = findViewById(R.id.tvYourBMonth)
         tvYourBYear = findViewById(R.id.tvYourBYear)
-        btnBack = findViewById(R.id.btnBack)
+        ivBack = findViewById(R.id.ivBack)
 
         // Retrieve from SharedPreferences
         val sp: SharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
@@ -50,7 +52,7 @@ class Profile : AppCompatActivity() {
         tvYourBMonth.text = sp.getString("BIRTH_MONTH", "")
         tvYourBYear.text  = sp.getString("BIRTH_YEAR", "")
 
-        btnBack.setOnClickListener {
+        ivBack.setOnClickListener {
             startActivity(Intent(this, MainMenu::class.java))
             finish()
         }

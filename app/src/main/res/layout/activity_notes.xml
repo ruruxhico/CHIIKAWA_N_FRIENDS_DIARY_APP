@@ -65,19 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/Yellow"
-        android:fontFamily="@font/tilt_warp"
-        android:textColor="#789DB1"
-        android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <CalendarView
         android:id="@+id/cvCalendar"
         android:layout_width="match_parent"
@@ -87,5 +74,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         android:background="@color/Yellow"/>
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="-50dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115"
+        app:srcCompat="@drawable/ic_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

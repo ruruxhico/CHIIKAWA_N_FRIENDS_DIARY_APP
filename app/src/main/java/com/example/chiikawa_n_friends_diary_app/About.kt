@@ -2,7 +2,7 @@ package com.example.chiikawa_n_friends_diary_app
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class About : AppCompatActivity() {
 
-    lateinit var btnBack: Button
+    lateinit var ivBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +22,8 @@ class About : AppCompatActivity() {
             insets
         }
 
-        btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener{
+        ivBack = findViewById(R.id.ivBack)
+        ivBack.setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
         }

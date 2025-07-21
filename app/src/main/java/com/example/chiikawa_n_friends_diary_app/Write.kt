@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,8 @@ import java.util.Locale
 
 class Write : AppCompatActivity() {
 
-    private lateinit var btnBack: Button
+    private lateinit var ivBack: ImageView
+    private lateinit var btnHome: Button
     private lateinit var btnDelete: Button
     private lateinit var btnSave: Button
     private lateinit var etmWrite: EditText
@@ -51,7 +53,8 @@ class Write : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         etmWrite = findViewById(R.id.etmWrite)
-        btnBack = findViewById(R.id.btnBack)
+        ivBack = findViewById(R.id.ivBack)
+        btnHome = findViewById(R.id.btnHome)
         btnSave = findViewById(R.id.btnSave)
         btnDelete = findViewById(R.id.btnDelete)
         tvEntry = findViewById(R.id.tvEntry)
@@ -75,8 +78,14 @@ class Write : AppCompatActivity() {
 
         fetchDiaryEntry(currentUser.uid, entryDocumentId)
 
-        btnBack.setOnClickListener {
+        ivBack.setOnClickListener {
             val intent = Intent(this, Notes::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        btnHome.setOnClickListener {
+            val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
             finish()
         }
