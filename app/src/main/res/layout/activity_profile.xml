@@ -9,16 +9,14 @@
     android:background="@color/Background">
 
     <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="601dp"
-        android:layout_height="796dp"
-        android:layout_marginTop="-50dp"
-        android:layout_marginBottom="-50dp"
+        android:id="@+id/imageView26"
+        android:layout_width="499dp"
+        android:layout_height="846dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_design" />
+        app:srcCompat="@drawable/bg_pap" />
 
     <ImageView
         android:id="@+id/imgChiikawa"
@@ -209,7 +207,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="389dp"
         android:layout_height="52dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="@font/tilt_warp"
         android:src="@drawable/profile"
         android:textSize="24sp"
@@ -309,5 +307,7 @@
         app:layout_constraintStart_toEndOf="@+id/tvYourBDay"
         app:layout_constraintTop_toTopOf="@+id/tvYourBDay"
         app:layout_constraintVertical_bias="0.7" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

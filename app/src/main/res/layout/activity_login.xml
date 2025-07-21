@@ -9,39 +9,34 @@
     tools:context=".Login">
 
     <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="532dp"
-        android:layout_height="487dp"
-        android:layout_marginStart="-50dp"
-        android:layout_marginEnd="-50dp"
-        android:src="@drawable/design"
+        android:id="@+id/imageView23"
+        android:layout_width="466dp"
+        android:layout_height="831dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/login_page" />
 
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="168dp"
         android:layout_height="161dp"
         android:layout_marginStart="-50dp"
-        android:layout_marginTop="556dp"
         android:layout_marginBottom="-70dp"
         android:src="@drawable/design_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView12"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etLoginEmail"
         android:layout_width="265dp"
         android:layout_height="61dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="252dp"
         android:ems="10"
         android:fontFamily="@font/chewy"
         android:hint="@string/email"
@@ -117,14 +112,15 @@
 
     <ImageView
         android:id="@+id/textView2"
-        android:layout_width="131dp"
-        android:layout_height="63dp"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
         android:src="@drawable/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.056" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
