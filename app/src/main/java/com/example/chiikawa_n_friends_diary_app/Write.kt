@@ -27,6 +27,7 @@ class Write : AppCompatActivity() {
     private lateinit var btnSave: Button
     private lateinit var etmWrite: EditText
     private lateinit var tvEntry: TextView
+    private lateinit var tvTitle: TextView
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -58,6 +59,7 @@ class Write : AppCompatActivity() {
         btnSave = findViewById(R.id.btnSave)
         btnDelete = findViewById(R.id.btnDelete)
         tvEntry = findViewById(R.id.tvEntry)
+        tvTitle = findViewById(R.id.tvTitle)
 
         selectedYear = intent.getIntExtra("EXTRA_YEAR", 0)
         selectedMonth = intent.getIntExtra("EXTRA_MONTH", 0)
@@ -75,6 +77,10 @@ class Write : AppCompatActivity() {
         calendar.set(selectedYear, selectedMonth, selectedDay)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         entryDocumentId = dateFormat.format(calendar.time)
+
+        val headingFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
+        val headingDate = headingFormat.format(calendar.time)
+        tvTitle.text = headingDate
 
         fetchDiaryEntry(currentUser.uid, entryDocumentId)
 
