@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tvHeader"
         android:layout_width="109dp"
         android:layout_height="38dp"
@@ -42,9 +42,8 @@
         android:background="#C59CAD"
         android:textColor="#FFF4BD"
         android:fontFamily="@font/tilt_warp"
-        android:text="@string/sign_up"
+        android:src="@drawable/signup"
         android:textAlignment="center"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"

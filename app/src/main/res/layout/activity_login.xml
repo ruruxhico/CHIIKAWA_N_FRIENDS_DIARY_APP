@@ -115,19 +115,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
-    <TextView
+    <ImageView
         android:id="@+id/textView2"
-        android:layout_width="93dp"
-        android:layout_height="42dp"
-        android:fontFamily="@font/chewy"
-        android:text="@string/login"
-        android:textSize="34sp"
+        android:layout_width="131dp"
+        android:layout_height="63dp"
+        android:src="@drawable/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.214" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
