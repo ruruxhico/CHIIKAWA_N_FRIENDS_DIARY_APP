@@ -38,6 +38,12 @@
             android:name=".Login"
             android:exported="false"/>
         <activity
+            android:name=".EditProfile"
+            android:exported="false"/>
+        <activity
+            android:name=".ChangePass"
+            android:exported="false"/>
+        <activity
             android:name=".Startup"
             android:exported="true">
             <intent-filter>

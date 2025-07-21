@@ -37,6 +37,8 @@
     <string name="home">HOME</string>
     <string name="edit"><u>Edit Details</u></string>
     <string name="confirm">Confirm Password</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="cancel">Cancel</string>
     <string name="none">null</string>
     <string name="redText">Cloud Engineer, DevOps, microservices</string>
     <string name="bjeaText">UI/UX design, React, Flutter</string>

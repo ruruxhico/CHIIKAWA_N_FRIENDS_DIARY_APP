@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -97,19 +98,9 @@ class Write : AppCompatActivity() {
         }
 
         btnDelete.setOnClickListener {
-            val docRef = db.collection("users").document(currentUser.uid)
-                .collection("diaryEntries").document(entryDocumentId)
-
-            docRef.delete()
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Diary entry deleted!", Toast.LENGTH_SHORT).show()
-                    tvEntry.text = ""
-                    etmWrite.text.clear()
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error deleting entry: ${e.message}", Toast.LENGTH_LONG).show()
-                }
+            showDeleteEntryDialog()
         }
+
 
         btnSave.setOnClickListener {
             val newTextToAppend = etmWrite.text.toString().trim()
@@ -129,7 +120,65 @@ class Write : AppCompatActivity() {
         }
     }
 
-    private fun fetchDiaryEntry(userId: String, dateId: String) {
+    private fun showDeleteEntryDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Delete Diary Entry")
+            .setMessage("Are you sure you want to delete your entry for ${tvTitle.text}? \n\nWARNING: This will delete the whole entry you made.")
+            .setPositiveButton("Delete") { dialog, _ ->
+                dialog.dismiss()
+                deleteDiaryEntry()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun deleteDiaryEntry() {
+        val user = auth.currentUser
+        if (user == null) {
+            Toast.makeText(this, "No diary entry found.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userID = user.uid
+        val docRef = db.collection("users").document(userID)
+            .collection("diaryEntries").document(entryDocumentId)
+
+        docRef.delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Diary entry deleted successfully!", Toast.LENGTH_SHORT).show()
+                tvEntry.text = "" // Clear the displayed entry
+                etmWrite.text.clear() // Clear the input field
+
+                // Optionally, redirect the user back to the Notes list or Main Menu
+                val intent = Intent(this, Notes::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error deleting entry: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+    }
+
+// This is an additional helper for when user clears content and saves, if you want that behavior
+private fun deleteDiaryEntryDirectly(userID: String, dateId: String) {
+    val docRef = db.collection("users").document(userID)
+        .collection("diaryEntries").document(dateId)
+
+    docRef.delete()
+        .addOnSuccessListener {
+            Toast.makeText(this, "Entry cleared and deleted from cloud.", Toast.LENGTH_SHORT).show()
+            etmWrite.text.clear()
+            tvEntry.text = ""
+        }
+        .addOnFailureListener { e ->
+            Toast.makeText(this, "Error clearing entry: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+}
+
+
+private fun fetchDiaryEntry(userId: String, dateId: String) {
         val docRef = db.collection("users").document(userId)
             .collection("diaryEntries").document(dateId)
 
