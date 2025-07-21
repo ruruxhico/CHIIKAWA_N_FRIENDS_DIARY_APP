@@ -8,6 +8,17 @@
     tools:context=".ChangePass"
     android:background="@color/Background">
 
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="492dp"
+        android:layout_height="810dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_pap" />
+
     <ImageView
         android:id="@+id/ivBack"
         android:layout_width="48dp"
@@ -120,5 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivBack"
         app:srcCompat="@drawable/change_pass_letter" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
