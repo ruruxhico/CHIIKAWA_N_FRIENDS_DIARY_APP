@@ -30,13 +30,10 @@
     <string name="ln_">Last Name:</string>
     <string name="bday_">Birthday:</string>
     <string name="email_">Email:</string>
-    <string name="day">Day (xx)</string>
-    <string name="month">Month (xx)</string>
-    <string name="year">Year(xxxx)</string>
+    <string name="day">dd</string>
+    <string name="month">mm</string>
+    <string name="year">yyyy</string>
+    <string name="slash">/</string>
     <string name="confirm">Confirm Password</string>
     <string name="none">null</string>
-    <string name="redText">Cloud Engineer, DevOps, microservices</string>
-    <string name="bjeaText">UI/UX design, React, Flutter</string>
-    <string name="ayelText">Algorithms, data structures, Kotlin/Java</string>
-    <string name="phiaText">Agile methodologies, Firebase, cross-functional teamwork</string>
 </resources>
