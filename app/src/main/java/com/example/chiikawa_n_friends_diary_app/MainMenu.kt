@@ -57,13 +57,13 @@ class MainMenu : AppCompatActivity() {
         btnNotes = findViewById(R.id.btnNotes)
         btnLogout = findViewById(R.id.btnLogout)
 
-        // Display user name from SharedPreferences
+        // display from shared prefs
         val sp = getSharedPreferences("UserSession", MODE_PRIVATE)
         val fname = sp.getString("FIRST_NAME", "") ?: ""
         val lname = sp.getString("LAST_NAME", "") ?: ""
         tvName.text = "Hello, $fname $lname!"
 
-        // Set up date/time update task
+        // set date time
         updateRunnable = object : Runnable {
             override fun run() {
                 updateDateTime()
@@ -82,7 +82,7 @@ class MainMenu : AppCompatActivity() {
             return
         }
 
-        // Navigation buttons
+        // Nav buttons
         btnProfile.setOnClickListener { startActivity(Intent(this, Profile::class.java)) }
         btnNotes.setOnClickListener { startActivity(Intent(this, Notes::class.java)) }
         btnAbout.setOnClickListener { startActivity(Intent(this, About::class.java)) }
@@ -98,7 +98,7 @@ class MainMenu : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        updateRunnable.run() // Start updating immediately
+        updateRunnable.run()
     }
 
     override fun onPause() {

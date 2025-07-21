@@ -5,6 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Background">#799EB2</color>
@@ -12,4 +13,11 @@
     <color name="Yellow">#F4E6C6</color>
     <color name="transparent">#00000000</color>
     <color name="darkred">#771714</color>
+    <color name="darkblue">#38586A</color>
+    <color name="darkblue2">#D638586A</color>
+    <color name="text">#080D2C</color>
+    <color name="pink_bg">#874052</color>
+    <color name="pink_bg2">#F09BB1</color>
+    <color name="pink_txt">#c9184a</color>
+    <color name="yellow_txt">#FFF4BD</color>
 </resources>

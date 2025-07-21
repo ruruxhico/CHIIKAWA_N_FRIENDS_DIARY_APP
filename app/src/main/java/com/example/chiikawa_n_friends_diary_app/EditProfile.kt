@@ -28,7 +28,9 @@ class EditProfile : AppCompatActivity() {
     private lateinit var etYourBMonth: EditText
     private lateinit var etYourBYear: EditText
     private lateinit var btnSaveChanges: Button
+    private lateinit var btnCancel: Button
 
+    //firebase var
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var sp: SharedPreferences
@@ -43,10 +45,12 @@ class EditProfile : AppCompatActivity() {
             insets
         }
 
+        //init auths
         auth = Firebase.auth
         db = Firebase.firestore
         sp = getSharedPreferences("UserSession", MODE_PRIVATE)
 
+        //var objects
         ivBack = findViewById(R.id.ivBack)
         etYourFname = findViewById(R.id.etYourFname)
         etYourMName = findViewById(R.id.etYourMName)
@@ -56,8 +60,13 @@ class EditProfile : AppCompatActivity() {
         etYourBMonth = findViewById(R.id.etYourBMonth)
         etYourBYear = findViewById(R.id.etYourBYear)
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
+        btnCancel = findViewById(R.id.btnCancel)
 
         loadCurrentProfileData()
+
+        btnCancel.setOnClickListener {
+            finish()
+        }
 
         ivBack.setOnClickListener {
             finish()
@@ -84,7 +93,7 @@ class EditProfile : AppCompatActivity() {
                         etYourBMonth.setText(document.getString("birthMonth"))
                         etYourBYear.setText(document.getString("birthYear"))
                     } else {
-                        // If not in Firestore, load from SharedPreferences (fallback for initial fill)
+                        // load from shared preds if not in firebase
                         etYourFname.setText(sp.getString("FIRST_NAME", ""))
                         etYourMName.setText(sp.getString("MIDDLE_NAME", ""))
                         etYourLName.setText(sp.getString("LAST_NAME", ""))
@@ -107,7 +116,7 @@ class EditProfile : AppCompatActivity() {
                 }
         } else {
             Toast.makeText(this, "No user logged in.", Toast.LENGTH_SHORT).show()
-            finish() // Go back if no user
+            finish()
         }
     }
 
@@ -126,13 +135,12 @@ class EditProfile : AppCompatActivity() {
         val birthMonth = etYourBMonth.text.toString().trim()
         val birthYear = etYourBYear.text.toString().trim()
 
-        // Basic validation
+        //checking fields if empty
         if (firstName.isEmpty() || lastName.isEmpty() ||
             birthDay.isEmpty() || birthMonth.isEmpty() || birthYear.isEmpty()) {
             Toast.makeText(this, "Please fill all required fields.", Toast.LENGTH_SHORT).show()
             return
         }
-        // Add more robust validation for email format, date validity etc.
 
         val profileData = hashMapOf(
             "firstName" to firstName,
@@ -144,10 +152,9 @@ class EditProfile : AppCompatActivity() {
         )
 
         db.collection("users").document(userId)
-            .set(profileData) // Use set() to create if not exists, or overwrite if exists
+            .set(profileData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
-                // Update SharedPreferences with the latest data
                 val editor: SharedPreferences.Editor = sp.edit()
                 editor.putString("FIRST_NAME", firstName)
                 editor.putString("MIDDLE_NAME", middleName)
@@ -156,7 +163,7 @@ class EditProfile : AppCompatActivity() {
                 editor.putString("BIRTH_MONTH", birthMonth)
                 editor.putString("BIRTH_YEAR", birthYear)
                 editor.apply()
-                finish() // Go back to Profile activity after saving
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error saving profile: ${e.message}", Toast.LENGTH_LONG).show()

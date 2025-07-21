@@ -33,6 +33,7 @@ class Write : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
+    //for the date heading
     private var selectedYear: Int = 0
     private var selectedMonth: Int = 0
     private var selectedDay: Int = 0
@@ -161,22 +162,6 @@ class Write : AppCompatActivity() {
             }
     }
 
-// This is an additional helper for when user clears content and saves, if you want that behavior
-private fun deleteDiaryEntryDirectly(userID: String, dateId: String) {
-    val docRef = db.collection("users").document(userID)
-        .collection("diaryEntries").document(dateId)
-
-    docRef.delete()
-        .addOnSuccessListener {
-            Toast.makeText(this, "Entry cleared and deleted from cloud.", Toast.LENGTH_SHORT).show()
-            etmWrite.text.clear()
-            tvEntry.text = ""
-        }
-        .addOnFailureListener { e ->
-            Toast.makeText(this, "Error clearing entry: ${e.message}", Toast.LENGTH_LONG).show()
-        }
-}
-
 
 private fun fetchDiaryEntry(userId: String, dateId: String) {
         val docRef = db.collection("users").document(userId)
@@ -204,7 +189,7 @@ private fun fetchDiaryEntry(userId: String, dateId: String) {
 
         docRef.set(entryData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Entry appended and saved to cloud!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Entry saved successfully!", Toast.LENGTH_SHORT).show()
                 etmWrite.text.clear()
                 tvEntry.text = fullContent
             }

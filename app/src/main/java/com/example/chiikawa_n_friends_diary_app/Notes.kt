@@ -2,7 +2,6 @@ package com.example.chiikawa_n_friends_diary_app
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.CalendarView
 import androidx.activity.enableEdgeToEdge

@@ -71,26 +71,26 @@
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:text="@string/sign_up"
-        android:textColor="#789DB1"
+        android:textColor="@color/darkblue"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:text="@string/login"
-        android:textColor="#789DB1"
-        android:backgroundTint="@color/Yellow"
+        android:textColor="@color/pink_txt"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSignUp"
-        app:layout_constraintTop_toTopOf="@+id/btnSignUp"
-        />
+        app:layout_constraintTop_toTopOf="@+id/btnSignUp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
