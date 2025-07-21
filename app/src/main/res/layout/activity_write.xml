@@ -58,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:fontFamily="@font/tilt_warp"
-        android:text="DATE"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +71,7 @@
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:text="@string/home"
-        android:textColor="#99657B"
+        android:textColor="@color/pink_txt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -87,6 +86,7 @@
         android:gravity="start|top"
         android:hint="@string/write"
         android:inputType="textMultiLine"
+        android:textColor="@color/text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:text="@string/save"
-        android:textColor="#789DB1"
+        android:textColor="@color/darkblue"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etmWrite" />
@@ -117,7 +117,7 @@
         android:backgroundTint="@color/Yellow"
         android:fontFamily="@font/tilt_warp"
         android:text="DELETE"
-        android:textColor="#789DB1"
+        android:textColor="@color/darkred"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSave"
         app:layout_constraintTop_toTopOf="@+id/btnSave" />

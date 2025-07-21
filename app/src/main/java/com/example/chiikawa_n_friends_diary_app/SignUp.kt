@@ -126,8 +126,6 @@ class SignUp : AppCompatActivity() {
                         val firebaseUser = auth.currentUser
                         firebaseUser?.let { user ->
                             val userId = user.uid
-
-                            // 1. Create a HashMap for user profile data
                             val userProfile = hashMapOf(
                                 "firstName" to fName,
                                 "middleName" to mName,
@@ -137,12 +135,10 @@ class SignUp : AppCompatActivity() {
                                 "birthMonth" to bMonth,
                                 "birthYear" to bYear
                             )
-
-                            // 2. Save user profile data to Firestore
                             db.collection("users").document(userId)
-                                .set(userProfile) // Use set() to create/overwrite user document
+                                .set(userProfile)
                                 .addOnSuccessListener {
-                                    // 3. Save to SharedPreferences for immediate session (optional, but good for quick UI updates)
+                                    // shared prefs section
                                     val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
                                     sharedPref.edit {
                                         putString("CURRENT_USER", userId)
@@ -161,7 +157,6 @@ class SignUp : AppCompatActivity() {
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "Failed to save profile: ${e.message}", Toast.LENGTH_LONG).show()
-                                    // Consider logging out the user from Firebase Auth if profile save fails
                                     auth.signOut()
                                 }
                         } ?: run {

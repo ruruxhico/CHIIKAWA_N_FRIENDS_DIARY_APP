@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imageView15"
-        android:layout_width="465dp"
-        android:layout_height="839dp"
+        android:layout_width="433dp"
+        android:layout_height="786dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,15 +50,14 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="304dp"
-        android:layout_height="247dp"
+        android:layout_width="241dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109"
-        app:srcCompat="@drawable/display" />
+        app:layout_constraintVertical_bias="0.137"
+        app:srcCompat="@drawable/_img" />
 
     <ImageView
         android:id="@+id/imageView19"

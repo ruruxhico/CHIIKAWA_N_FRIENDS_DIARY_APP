@@ -42,6 +42,7 @@ class Profile : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var sp: SharedPreferences
 
+    //for log msgs
     private val message = "ProfileDelete"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +55,7 @@ class Profile : AppCompatActivity() {
             insets
         }
 
+        //firebase objs
         auth = Firebase.auth
         db = Firebase.firestore
         sp = getSharedPreferences("UserSession", MODE_PRIVATE)
@@ -79,21 +81,13 @@ class Profile : AppCompatActivity() {
         loadUserProfile()
 
         btnEditDetails.setOnClickListener {
-            // Option 1: Start a new activity for editing details
-            val intent = Intent(this, EditProfile::class.java) // Create EditProfileActivity
+            val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
-
-            // Option 2 (Alternative): Show an AlertDialog with EditTexts for editing
-            // This would be more complex to implement directly here for all fields
         }
 
         btnChangePassword.setOnClickListener {
-            // Option 1: Start a new activity for changing password
-            val intent = Intent(this, ChangePass::class.java) // Create ChangePasswordActivity
+            val intent = Intent(this, ChangePass::class.java)
             startActivity(intent)
-
-            // Option 2 (Alternative): Show an AlertDialog asking for old/new password
-            // This is also a common approach.
         }
 
         btnDeleteAccount.setOnClickListener {
@@ -103,7 +97,6 @@ class Profile : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Reload data from Firestore whenever the activity resumes (e.g., after editing)
         loadUserProfile()
     }
 
@@ -118,12 +111,12 @@ class Profile : AppCompatActivity() {
                         tvYourFname.text = document.getString("firstName")
                         tvYourMName.text = document.getString("middleName")
                         tvYourLName.text = document.getString("lastName")
-                        tvYourEmail.text = document.getString("email") ?: currentUser.email // Prioritize Firestore, fallback to Auth email
+                        tvYourEmail.text = document.getString("email") ?: currentUser.email
                         tvYourBDay.text = document.getString("birthDay")
                         tvYourBMonth.text = document.getString("birthMonth")
                         tvYourBYear.text = document.getString("birthYear")
 
-                        // Update SharedPreferences with the latest Firestore data
+                        // sycn shared prefs and firestore/firebase data
                         val editor: SharedPreferences.Editor = sp.edit()
                         editor.putString("FIRST_NAME", document.getString("firstName"))
                         editor.putString("MIDDLE_NAME", document.getString("middleName"))
@@ -134,23 +127,17 @@ class Profile : AppCompatActivity() {
                         editor.putString("BIRTH_YEAR", document.getString("birthYear"))
                         editor.apply()
                     } else {
-                        // Document doesn't exist in Firestore, use data from SharedPreferences
                         loadFromSharedPreferences()
                         Toast.makeText(this, "Profile not found in cloud, showing local data.", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener { e ->
-                    // Error fetching from Firestore, use data from SharedPreferences
                     loadFromSharedPreferences()
                     Toast.makeText(this, "Error loading profile: ${e.message}", Toast.LENGTH_LONG).show()
                 }
         } else {
-            // No user logged in, clear UI or show login prompt
             clearProfileDisplay()
             Toast.makeText(this, "No user logged in. Please log in.", Toast.LENGTH_SHORT).show()
-            // Optionally redirect to login screen:
-            // startActivity(Intent(this, Startup::class.java))
-            // finish()
         }
     }
 
@@ -174,8 +161,7 @@ class Profile : AppCompatActivity() {
         tvYourBYear.text = ""
     }
 
-    // --- Delete Account Feature ---
-
+    // for deleting accs
     private fun showDeleteAccountDialog() {
         AlertDialog.Builder(this)
             .setTitle("Delete Account")
@@ -221,8 +207,7 @@ class Profile : AppCompatActivity() {
                 }
                 .show()
         } else {
-            // For other providers (Google, Facebook), assume reauthentication isn't needed or handled automatically
-            reauthenticateAndDeleteUserAndData(currentUser, null) // Pass null for password
+            reauthenticateAndDeleteUserAndData(currentUser, null)
         }
     }
 
@@ -231,27 +216,19 @@ class Profile : AppCompatActivity() {
             val credential = EmailAuthProvider.getCredential(user.email!!, password)
             user.reauthenticate(credential)
         } else {
-            // If no password (e.g., social login) or email is null, skip explicit reauthentication
-            // This relies on Firebase token freshness or provider handling.
-            Tasks.forResult(null) // Return a completed task if reauth not strictly needed
+            Tasks.forResult(null)
         }
 
         reauthOperation.addOnCompleteListener { reauthTask ->
             if (reauthTask.isSuccessful) {
-                // Reauthentication successful or not required. Proceed with deletion.
-
-                // Start chained deletion: Auth account -> Firestore user doc -> Firestore subcollection
-                user.delete() // Delete Auth account
+                user.delete()
                     .addOnCompleteListener { authTask ->
                         if (authTask.isSuccessful) {
-                            // Auth account successfully deleted.
-                            // Now attempt to delete Firestore data silently (from user's perspective).
                             val userId = user.uid
                             val userDocRef = db.collection("users").document(userId)
 
-                            userDocRef.delete() // Attempt to delete primary user document
+                            userDocRef.delete()
                                 .addOnSuccessListener {
-                                    // Primary user document deleted. Now attempt subcollection.
                                     db.collection("users").document(userId)
                                         .collection("diaryEntries")
                                         .get()
@@ -260,47 +237,40 @@ class Profile : AppCompatActivity() {
                                             for (document in querySnapshot.documents) {
                                                 batch.delete(document.reference)
                                             }
-                                            if (!querySnapshot.isEmpty) { // Only commit if there are entries
+                                            if (!querySnapshot.isEmpty) {
                                                 batch.commit()
                                                     .addOnSuccessListener {
-                                                        // All deletions (Auth, primary doc, diary entries) succeeded.
                                                         Toast.makeText(this, "Account successfully deleted!", Toast.LENGTH_LONG).show()
                                                         clearAndRedirectToLogin()
                                                     }
                                                     .addOnFailureListener { e ->
-                                                        // Auth and primary doc deleted, but diary entries failed.
-                                                        // User still gets success message as per requirement, but we log the error.
                                                         Log.e(message, "Failed to delete diary entries for user $userId: ${e.message}", e)
                                                         Toast.makeText(this, "Account successfully deleted!", Toast.LENGTH_LONG).show()
                                                         clearAndRedirectToLogin()
                                                     }
                                             } else {
-                                                // Auth and primary doc deleted, no diary entries to delete.
                                                 Toast.makeText(this, "Account successfully deleted!", Toast.LENGTH_LONG).show()
                                                 clearAndRedirectToLogin()
                                             }
                                         }
                                         .addOnFailureListener { e ->
-                                            // Auth and primary doc deleted, but query for diary entries failed.
                                             Log.e(message, "Failed to query diary entries for user $userId: ${e.message}", e)
                                             Toast.makeText(this, "Account successfully deleted!", Toast.LENGTH_LONG).show()
                                             clearAndRedirectToLogin()
                                         }
                                 }
                                 .addOnFailureListener { e ->
-                                    // Auth account deleted, but primary user document failed to delete.
                                     Log.e(message, "Failed to delete primary user document $userId from Firestore: ${e.message}", e)
                                     Toast.makeText(this, "Account successfully deleted!", Toast.LENGTH_LONG).show()
                                     clearAndRedirectToLogin()
                                 }
                         } else {
-                            // Firebase Auth account deletion failed. This is the primary failure point.
                             Toast.makeText(this, "Failed to delete account: ${authTask.exception?.message}", Toast.LENGTH_LONG).show()
                             Log.e(message, "Firebase Auth account deletion failed for user ${user.uid}: ${authTask.exception?.message}", authTask.exception)
                         }
                     }
             } else {
-                // Reauthentication itself failed.
+                // if auth failed
                 Toast.makeText(this, "Authentication failed: Incorrect password or not recent login. Please try again.", Toast.LENGTH_LONG).show()
                 Log.e(message, "Reauthentication failed for user ${user.uid}: ${reauthTask.exception?.message}", reauthTask.exception)
             }
@@ -309,10 +279,10 @@ class Profile : AppCompatActivity() {
 
 
     private fun clearAndRedirectToLogin() {
-        sp.edit().clear().apply() // Clear all user session data
-        val intent = Intent(this, Startup::class.java) // Assuming Startup is your initial login/signup screen
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear back stack
+        sp.edit().clear().apply() //clean sessions
+        val intent = Intent(this, Startup::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish() // Finish the current activity
+        finish()
     }
 }

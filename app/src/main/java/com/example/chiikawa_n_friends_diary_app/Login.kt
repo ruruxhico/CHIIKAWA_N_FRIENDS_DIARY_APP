@@ -79,14 +79,13 @@ class Login : AppCompatActivity() {
                         firebaseUser?.let{ user ->
                             val userId = user.uid
 
-                            // --- NEW: Fetch user profile from Firestore ---
+                            // fetch user from firestore/db
                             db.collection("users").document(userId).get()
                                 .addOnSuccessListener { document ->
                                     if (document.exists()) {
-                                        // Save fetched profile data to SharedPreferences
                                         val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
                                         sharedPref.edit {
-                                            putString("CURRENT_USER", userId) // Always update UID
+                                            putString("CURRENT_USER", userId)
                                             putString("FIRST_NAME", document.getString("firstName"))
                                             putString("MIDDLE_NAME", document.getString("middleName"))
                                             putString("LAST_NAME", document.getString("lastName"))
@@ -101,14 +100,12 @@ class Login : AppCompatActivity() {
                                         finish()
                                     } else {
                                         Toast.makeText(this, "Login successful, but profile data not found in Firestore. Please sign up again.", Toast.LENGTH_LONG).show()
-                                        // Optional: Sign out the user if profile data is missing
                                         auth.signOut()
                                     }
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "Login successful, but failed to load profile data: ${e.message}", Toast.LENGTH_LONG).show()
-                                    // Proceed to MainMenu without profile data, or sign out and show error
-                                    startActivity(Intent(this, MainMenu::class.java)) // Decide whether to proceed or block
+                                    startActivity(Intent(this, MainMenu::class.java))
                                     finish()
                                 }
                         } ?: run {

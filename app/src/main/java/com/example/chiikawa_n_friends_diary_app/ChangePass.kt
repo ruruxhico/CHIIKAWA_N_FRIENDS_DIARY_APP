@@ -34,14 +34,17 @@ class ChangePass: AppCompatActivity() {
             insets
         }
 
+        //init auth
         auth = Firebase.auth
 
+        //init objects
         ivBack = findViewById(R.id.ivBack)
         etCurrentPassword = findViewById(R.id.etCurrentPassword)
         etNewPassword = findViewById(R.id.etNewPassword)
         etConfirmNewPassword = findViewById(R.id.etConfirmNewPassword)
         btnUpdatePassword = findViewById(R.id.btnUpdatePassword)
 
+        //navigations
         ivBack.setOnClickListener {
             finish()
         }
@@ -51,6 +54,7 @@ class ChangePass: AppCompatActivity() {
         }
     }
 
+    // changing passwords
     private fun changeUserPassword() {
         val user = auth.currentUser
         if (user == null) {
@@ -77,18 +81,18 @@ class ChangePass: AppCompatActivity() {
             return
         }
 
-        // --- Reauthenticate user before changing password ---
+        // input pass again
         val credential = EmailAuthProvider.getCredential(user.email!!, currentPassword)
 
         user.reauthenticate(credential)
             .addOnCompleteListener { reauthTask ->
                 if (reauthTask.isSuccessful) {
-                    // Reauthentication successful, now update password
+                    // actual updating password
                     user.updatePassword(newPassword)
                         .addOnCompleteListener { updatePasswordTask ->
                             if (updatePasswordTask.isSuccessful) {
                                 Toast.makeText(this, "Password updated successfully!", Toast.LENGTH_SHORT).show()
-                                finish() // Go back to Profile activity
+                                finish()
                             } else {
                                 Toast.makeText(this, "Failed to update password: ${updatePasswordTask.exception?.message}", Toast.LENGTH_LONG).show()
                             }
