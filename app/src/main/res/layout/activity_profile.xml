@@ -230,4 +230,52 @@
         app:layout_constraintVertical_bias="0.115"
         app:srcCompat="@drawable/ic_back" />
 
+    <Button
+        android:id="@+id/btnEditDetails"
+        android:layout_width="136dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="276dp"
+        android:backgroundTint="@color/transparent"
+        android:fontFamily="@font/tilt_warp"
+        android:stateListAnimator="@null"
+        android:text="@string/edit"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#153C52"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="191dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/Yellow"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Change Password"
+        android:textAlignment="center"
+        android:textColor="#789DB1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDeleteAccount"
+        android:layout_width="191dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/darkred"
+        android:fontFamily="@font/tilt_warp"
+        android:text="Delete Account"
+        android:textAlignment="gravity"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

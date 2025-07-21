@@ -35,6 +35,7 @@
     <string name="year">yyyy</string>
     <string name="slash">/</string>
     <string name="home">HOME</string>
+    <string name="edit"><u>Edit Details</u></string>
     <string name="confirm">Confirm Password</string>
     <string name="none">null</string>
     <string name="redText">Cloud Engineer, DevOps, microservices</string>
