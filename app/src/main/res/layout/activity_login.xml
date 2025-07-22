@@ -70,7 +70,7 @@
         app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="@+id/etLoginPassword"
         app:layout_constraintTop_toTopOf="@+id/etLoginPassword"
-        app:tint="@color/white" />
+        app:tint="@color/black" />
 
     <Button
         android:id="@+id/btnLogin"
