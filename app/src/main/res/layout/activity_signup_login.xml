@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgChiikawa"
-        app:srcCompat="@drawable/wel" />
+        app:srcCompat="@drawable/title_" />
 
     <Button
         android:id="@+id/btnSignUp"
