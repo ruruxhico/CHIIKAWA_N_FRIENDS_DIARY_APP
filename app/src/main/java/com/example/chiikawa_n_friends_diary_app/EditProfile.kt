@@ -88,7 +88,7 @@ class EditProfile : AppCompatActivity() {
                         etYourFname.setText(document.getString("firstName"))
                         etYourMName.setText(document.getString("middleName"))
                         etYourLName.setText(document.getString("lastName"))
-                        tvYourEmail.setText(document.getString("email"))
+                        tvYourEmail.text = document.getString("email") ?: currentUser.email
                         etYourBDay.setText(document.getString("birthDay"))
                         etYourBMonth.setText(document.getString("birthMonth"))
                         etYourBYear.setText(document.getString("birthYear"))
@@ -97,7 +97,7 @@ class EditProfile : AppCompatActivity() {
                         etYourFname.setText(sp.getString("FIRST_NAME", ""))
                         etYourMName.setText(sp.getString("MIDDLE_NAME", ""))
                         etYourLName.setText(sp.getString("LAST_NAME", ""))
-                        tvYourEmail.setText(sp.getString("EMAIL", currentUser.email ?: ""))
+                        tvYourEmail.text = document.getString("EMAIL") ?: currentUser.email
                         etYourBDay.setText(sp.getString("BIRTH_DAY", ""))
                         etYourBMonth.setText(sp.getString("BIRTH_MONTH", ""))
                         etYourBYear.setText(sp.getString("BIRTH_YEAR", ""))
@@ -108,7 +108,7 @@ class EditProfile : AppCompatActivity() {
                     etYourFname.setText(sp.getString("FIRST_NAME", ""))
                     etYourMName.setText(sp.getString("MIDDLE_NAME", ""))
                     etYourLName.setText(sp.getString("LAST_NAME", ""))
-                    tvYourEmail.setText(sp.getString("EMAIL", currentUser.email ?: ""))
+                    tvYourEmail.text = sp.getString("EMAIL", "") ?: currentUser.email
                     etYourBDay.setText(sp.getString("BIRTH_DAY", ""))
                     etYourBMonth.setText(sp.getString("BIRTH_MONTH", ""))
                     etYourBYear.setText(sp.getString("BIRTH_YEAR", ""))
